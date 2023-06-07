@@ -23,19 +23,14 @@ const { MongoClient, Admin } = require('mongodb');
 
 const app = express();
 
-// View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//The root argument specifies the root directory from which to serve static assets
-//express.static(root, [options])
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(logger('dev'));
 
-// Body-parser middleware
-// Allowing app to use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -50,9 +45,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// To use with sessions
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/pizzeria', {
@@ -67,7 +61,6 @@ connection.once('open', () => {
 })
 
 
-// Set up passport strategy
 passport.use(new LocalStrategy(
     async function(username, password, done) {
 
@@ -116,7 +109,6 @@ passport.use(new LocalStrategy(
     }
   ))
   
-  // Set up passport serialization and deserialization
   passport.serializeUser(function(user, done) {
     done(null, user.username);
   });

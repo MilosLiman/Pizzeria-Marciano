@@ -3,22 +3,7 @@ const router = express.Router();
 
 const User = require('../schemas/UserSchema');
 
-var LocalStrategy = require('passport-local').Strategy;
-var crypto = require('crypto');
-const connectEnsureLogin = require('connect-ensure-login');// authorization
 const passport = require('passport');
-
-//midleware funkcija koja proverava da li je korisnik autentikovan
-// function isAuthenticated(req, res, next){
-
-//   // if(req.isAuthenticated()){
-//   //   req.body.username = 'user';
-//   //   req.body.password = 'user';
-//   //   next()
-//   // }else{
-//   //   res.redirect('/admin/login');
-//   // }
-// }
 
 
 router.get('/login', (req, res, next) => {
@@ -31,26 +16,16 @@ router.get('/dashboard', function(req, res) {
   const username = req.user.username
 
     if (req.isAuthenticated()) {
-      // res.send(`Welcome, ${req.user.username}!`);
-
       res.render('dashboard', {
         name: username,
         isLogin: true
       })
-
-    // res.send(`Hello ${req.user.username}. 
-    // Your session ID is ${req.sessionID} 
-    // and your session expires 
-    // in ${req.session.cookie.maxAge}`)
 
     } else {
       res.redirect('/');
     }
   });
 
-// router.get('/dashboard', isAuthenticated, function(req, res){
-//   res.render('dashboard');
-// })
 
 router.get('/signup', (req, res) => {
     res.render('signup')

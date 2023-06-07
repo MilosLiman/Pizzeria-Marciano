@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/form.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <nav class="navbar">
@@ -22,6 +25,104 @@
         </ul>
     </nav>
 
-    <h2>HELLO <%= name %></h2>
+    <section class="hero">
+        <div class="hero-text">
+          <h2>Welcome <%= name %> to our dashboard</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, ad?</p>
+          <a href="#" class="cta-button" id="cta-btn">Order Online</a>
+        </div>
+      <div class="hide_pizzaMenu">
+
+        <div class="pizzaMenu-head">
+          <p class="menuTitle">Pizza Menu</p>
+          <i class="fa-solid fa-x" id="menuClose"></i>
+        </div>
+
+        <div class="pizza-box">
+
+          <div class="pizza-item">
+            <img src="../img/margarita.jpg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Margarita</p>
+                <p>8€</p>
+              </div>
+              <p>Pelat, mocarela, bosiljak</p>
+            </div>
+          </div>
+
+
+          <div class="pizza-item">
+            <img src="../img/capricciosa.jpg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Capricciosa</p>
+                <p>8€</p>
+              </div>
+              <p>Pelat, sir, šunka, pečurke</p>
+            </div>
+          </div>
+
+          <div class="pizza-item">
+            <img src="../img/veget.jpg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Vegetarijana</p>
+                <p>6€</p>
+              </div>
+              <p>Pelat, pečurke, paprika, mocarela, ljubičasti luk, feta sir, paradajz, baby spanać</p>
+            </div>
+          </div>
+
+          <div class="pizza-item">
+            <img src="../img/vez.jpeg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Vezuvio </p>
+                <p>7€</p>
+              </div>
+              <p>Pelat, sir, šunka</p>
+            </div>
+          </div>
+
+          <div class="pizza-item">
+            <img src="../img/quatro.jpg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Quattro formaggi</p>
+                <p>10€</p>
+              </div>
+              <p>Pelat, mocarela, kackavalj, feta, gorgonzola, origano</p>
+            </div>
+          </div>
+
+          <div class="pizza-item">
+            <img src="../img/kulen-pizza.jpg" alt="">
+            <div class="pizza-item-desc">
+              <div class="pizza-item-desc-title">
+                <p>Milano</p>
+                <p>9€</p>
+              </div>
+              <p>Pelat, mocarela, kulen</p>
+            </div>
+          </div>
+      </div>
+      </div>
+      </section>
+
+      <script>
+        const btnMenu = document.getElementById('cta-btn');
+        const menuClose = document.getElementById('menuClose');
+        const hiddenPizzaMenu = document.querySelector('.hide_pizzaMenu');
+        const pizzaMenu = document.querySelector('.pizzaMenu');
+
+        btnMenu.addEventListener('click', () => {
+          hiddenPizzaMenu.classList.toggle('pizzaMenu');
+        })
+
+        menuClose.addEventListener('click', () => {
+          hiddenPizzaMenu.classList.remove('pizzaMenu');
+        })
+      </script>
 </body>
 </html>
