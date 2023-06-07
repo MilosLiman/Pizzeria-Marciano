@@ -12,7 +12,6 @@ const UserSchema = new Schema({
     password: {type: String, required: true}
 })
 
-// Hash the password before saving the user object
 UserSchema.pre('save', async function(next) {
     try {
       const salt = await bcrypt.genSalt(10);
@@ -24,7 +23,6 @@ UserSchema.pre('save', async function(next) {
     }
   });
   
-  // Compare the candidate password with the hashed password
   UserSchema.methods.comparePassword = async function(candidatePassword) {
     try {
       const isMatch = await bcrypt.compare(candidatePassword, this.password);
@@ -35,13 +33,12 @@ UserSchema.pre('save', async function(next) {
   };
 
 
-// Export Model
 UserSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model('User', UserSchema);
 
 //ADMIN JE VEC KREIRAN PA JE ZAKOMENTARISANO, DA SE NE BI PONAVLJAO 
-//TJ DOLAZI DO KOLFIKTA JER POSTOJE VEC USER SA ISTIM USERNAME-om
+//TJ DOLAZI DO KOLNFIKTA JER POSTOJI VEC USER SA ISTIM USERNAME-om
 
 //Add a new user to the database
 // const admin = new User({
